@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>Inicio | NationGamer</title>
+  </head>
+  <body style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdU9D07HDPDec_r08jAfFS2VjcGxqLT0nM2Q&usqp=CAU);">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="https://cdn.pixabay.com/photo/2016/11/19/00/10/gamepad-1837422_960_720.png"  style="width:150px; height:80px" alt="logo"></a>
+        <a class="navbar-brand" href="/">NationGamer</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active"  style="padding-left: 45rem;" aria-current="page" href="/create">Registrate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/login">Iniciar Sesion</a>
+            </li>
+          </ul> 
+        </div>
+      </div>
+    </nav>
+    <br>
+    <form class="d-flex" style="padding-left: 25rem;">
+      <input class="form-control " style="width: 500px;" type="search" placeholder="Titulo del juego" aria-label="Search">
+      <button class="btn btn-success"  type="submit">Buscar</button>
+    </form>
+    <br>
+    <div class="container">
+      <% results.forEach((juego)=> { %>
+      <div class="card mb-3" style="max-width: 1020px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="<%=juego.imagen %>"  style="width:210px; height:250px" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%=juego.titulo %></h5>
+              <p class="card-text"><%=juego.descripcion %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%})%>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script> </script>
+  </body>
+</html>
