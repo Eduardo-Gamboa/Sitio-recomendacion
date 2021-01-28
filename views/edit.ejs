@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>Actualizar | NationGamer</title>
+  </head>
+  <body  style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdU9D07HDPDec_r08jAfFS2VjcGxqLT0nM2Q&usqp=CAU);">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="https://cdn.pixabay.com/photo/2016/11/19/00/10/gamepad-1837422_960_720.png"  style="width:150px; height:80px" alt="logo"></a>
+        <a class="navbar-brand" href="/">NationGamer</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active"   aria-current="page" href="/mygames">Mis Juegos</a>
+            </li>
+          </ul>
+          <ul>
+            <li class="navbar-text">
+              <a class="nav-link active"  aria-current="page" href="/create">Registrate</a>
+            </li>
+            
+          </ul> 
+          <ul>
+            <li class="navbar-text">
+              <a class="nav-link active" aria-current="page" href="/login">Iniciar Sesion</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <br>
+    <br>
+    <% if (juego) { %>
+    <div class="container mb-4" style="padding: 0  350px;">
+        <div class="card"> 
+            <div class="card-header" style="text-align: center;"><h2>Advertencia</h2></div>
+            <div class="card-body">
+                <form action="/editar_juego" method="POST">
+                  <input type="hidden" id="id_juegos" class="form-control" name="id_juegos" value="<%=juego.id_juegos%>" tabindex="1" >
+                  <div class="form-group">
+                    <label>Seguro de Autorizar la Siguiente Recomendación</label>
+                  </div>
+                  <div class="form-group">
+                    <label>Titulo</label>
+                    <input type="text" id="titulo" class="form-control" name="titulo" value="<%=juego.titulo%>" tabindex="1" >
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <input type="hidden" id="imagen" class="form-control" name="imagen" value="<%=juego.imagen%>" tabindex="2" >
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <input type="hidden" id="descripcion" class="form-control" name="descripcion" value="<%=juego.descripcion%>" tabindex="3" >
+                  </div>
+                  <br>
+                  <div class="form-group">
+                        <input type="hidden" id="status" class="form-control" name="status" value="2" tabindex="4" >
+                    </div>
+                    <br>
+                  <div class="form-group">
+                        <button type="submit" class="btn btn-primary" tabindex="5">Aceptar</button>
+                        <a href="/"  class="btn btn-secondary">Cancelar</a>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% } %>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script> </script>
+  </body>
+</html>

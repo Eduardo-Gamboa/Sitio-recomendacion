@@ -25,13 +25,11 @@
             <li class="nav-item">
               <a class="nav-link active"   aria-current="page" href="/mygames">Mis Juegos</a>
             </li>
-           
-          </ul>
+          </ul> 
           <ul>
             <li class="navbar-text">
               <a class="nav-link active"  aria-current="page" href="/create">Registrate</a>
             </li>
-            
           </ul> 
           <ul>
             <li class="navbar-text">
@@ -46,26 +44,27 @@
     <br>
     <div class="container" style="padding: 0  350px;">
         <div class="card" style="width: 30rem;"> 
-            <div class="card-header" style="text-align: center;"><h2>Registrate</h2></div>
+            <div class="card-header" style="text-align: center;"><h2>Recomendar VideoJuego</h2></div>
             <div class="card-body">
-                <form action="/save" method="post">
+                <form action="/save_juego" method="post">
                     <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" id="nombre" class="form-control" name="nombre" tabindex="1" >
+                        <label>Titulo</label>
+                        <input type="text" id="titulo" placeholder="Uncharter 2" class="form-control" name="titulo" tabindex="1" >
                     </div>
                     <br>
                     <div class="form-group">
-                        <label>Correo</label>
-                        <input type="email" id="correo" class="form-control" name="correo" tabindex="2">
+                        <label>Descripcion</label>
+                        <textarea name="descripcion" placeholder="Es un juego de ..."  id="descripcion" class="form-control" rows="3" tabindex="2"></textarea>
                     </div>
                     <br>
                     <div class="form-group">
-                        <label>Cantraseña</label>
-                        <input type="password" id="contra" class="form-control" name="contra" tabindex="3" >
+                        <label>Imagen</label>
+                        <input type="url" id="imagen" placeholder="Insertar solo url de la imagen" class="form-control" name="imagen" tabindex="3" >
                     </div>
                     <br>
+                    
                     <div class="form-group">
-                        <input type="hidden" id="id_perfil" class="form-control" name="id_perfil" value="2" tabindex="4" >
+                        <input type="hidden" id="status" class="form-control" name="status" value="2" tabindex="4" >
                     </div>
                     <br>
                     <div class="form-group">
