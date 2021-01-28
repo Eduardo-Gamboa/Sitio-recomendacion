@@ -9,7 +9,7 @@
   <body style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdU9D07HDPDec_r08jAfFS2VjcGxqLT0nM2Q&usqp=CAU);">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="https://cdn.pixabay.com/photo/2016/11/19/00/10/gamepad-1837422_960_720.png"  style="width:150px; height:80px" alt="logo"></a>
+        <a class="navbar-brand" style="display: inline-block;" href="/"><img src="https://cdn.pixabay.com/photo/2016/11/19/00/10/gamepad-1837422_960_720.png"  style="width:150px;  height:80px;" alt="logo"></a>
         <a class="navbar-brand" href="/">NationGamer</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
             <li class="nav-item">
               <a class="nav-link active"   aria-current="page" href="/mygames">Mis Juegos</a>
             </li>
-          </ul>
+          </ul> 
           <ul>
             <li class="navbar-text">
               <a class="nav-link active"  aria-current="page" href="/create">Registrate</a>
@@ -37,12 +37,15 @@
       </div>
     </nav>
     <br>
-    <form class="d-flex" style="padding-left: 25rem;">
-      <input class="form-control " style="width: 500px;" type="search" placeholder="Titulo del juego" aria-label="Search">
-      <button class="btn btn-success"  type="submit">Buscar</button>
-    </form>
     <br>
+    
+    
+
     <div class="container">
+      <h3 style="color: azure; display: inline-block; ">Agregar una Recomendación</h3>&nbsp;&nbsp;
+      <a href="/create_games" style="padding: 10px;" class="btn btn-primary mt-4"><i class='bx bx-plus-circle bx-md'></i> </a>
+      <br>
+      <br>
       <% results.forEach((juego)=> { %>
       <div class="card mb-3" style="max-width: 1020px;">
         <div class="row g-0">
@@ -57,11 +60,6 @@
             </div>
           </div>
           <div class="col-md-2">
-            <div class="card-body">
-              <a href="/edit/<%=juego.id_juegos %>" class="btn btn-primary">Aceptar</a>
-              <br>
-              <a href="/delete/<%=juego.id_juegos %>" class="btn btn-danger">Eliminar</a>
-            </div>
           </div>
         </div>
       </div>
