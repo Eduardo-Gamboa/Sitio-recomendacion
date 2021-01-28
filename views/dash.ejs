@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>Inicio | NationGamer</title>
+</head>
+
+<body
+    style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdU9D07HDPDec_r08jAfFS2VjcGxqLT0nM2Q&usqp=CAU);">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" style="display: inline-block;" href="/dash"><img
+                    src="https://cdn.pixabay.com/photo/2016/11/19/00/10/gamepad-1837422_960_720.png"
+                    style="width:150px;  height:80px;" alt="logo"></a>
+            <a class="navbar-brand" href="/dash">NationGamer</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+              </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/dash">JUEGOS POR VALIDAR</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          MENÚ
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="#">MI PERFIL</a></li>
+                          <li><a class="dropdown-item" href="/">CERRAR SESIÓN</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">AJUSTES</a></li>
+                        </ul>
+                      </li>
+                </ul>
+
+                
+                <ul>
+                    <li class="navbar-text">
+                        <a class="nav-link active" aria-current="page" href="#"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+
+   
+
+    <form class="d-flex" style="padding-left: 25rem;">
+        <input class="form-control " style="width: 500px;" type="search" placeholder="Titulo del juego"
+            aria-label="Search">
+        <button class="btn btn-success" type="submit">Buscar</button>
+    </form>
+    <br>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="col-lg-10">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" href="#pills-home" role="tab"
+                            aria-controls="pills-home" aria-selected="true">JUEGOS POR VALIDAR</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pills-profile-tab"  href="/dashYaValidados" role="tab"
+                            aria-controls="pills-profile" aria-selected="false">JUEGOS RECOMENDADOS</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" href="#pills-contact" role="tab"
+                            aria-controls="pills-contact" aria-selected="false">Contact</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <% results.forEach((juego)=> { %>
+                            <div class="card mb-3" style="max-width: 1020px;">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="<%=juego.imagen %>" style="width:240px; height:320px" alt="...">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <%=juego.titulo %>
+                                            </h5>
+                                            <p class="card-text">
+                                                <%=juego.descripcion %>
+                                            </p>
+                                            <p class="card-text" hidden>
+                                                <%=juego.id_juegos %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="card-body">
+                                            <a href="/edit/<%=juego.id_juegos %>" class="btn btn-primary">Aceptar <br></a>
+                                            <br><br>
+                                            <a href="/delete/<%=juego.id_juegos %>" class="btn btn-danger">Eliminar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%})%>
+                        
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+
+                        
+                    </div>
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+        </div>
+
+        
+    </div>
+    <br>
+ <!-- Footer -->
+ <footer class="bg-dark text-white text-center text-lg-start">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">ACERCA DE NOSOTROS</h5>
+  
+          <p>
+            ¡Bienvenido a nuestro sitio web! Somos una empresa dedicada completamente a las recomendaciones de videojuegos. Nuestro objetivo es llegar a millones de personas a través de nuestras recomendaciones. 
+          </p>
+        </div>
+        <!--Grid column-->
+  
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">INFO</h5>
+  
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+  
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-0">REDES SOCIALES</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2020 Copyright:
+      <a class="text-white" href="/games_admin">NationGamer2020</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    </script>
+</body>
+
+</html>
