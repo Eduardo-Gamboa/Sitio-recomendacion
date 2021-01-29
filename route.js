@@ -97,16 +97,7 @@ router.get('/login',(req, res)=>{
     res.render('login')
 })
 
-//cerrar session
-router.post('/logout', function(request, response) {
-    if (request.session.loggedin) {
-        request.session.loggedin = false;
-        response.redirect('/');
-    } else {
-        response.redirect('/inicieSesion');
-    }
-    response.end();
-});
+
 
 // //Juegos ya validados
 router.get('/myprofileUser2', function (req, res) {
@@ -139,6 +130,19 @@ router.get('/myprofileUser2', function (req, res) {
     res.end();
 });
 
+
+
+
+//cerrar session
+router.post('/logout', function(request, response) {
+    if (request.session.loggedin) {
+        request.session.loggedin = false;
+        response.redirect('/');
+    } else {
+        response.redirect('/inicieSesion');
+    }
+    response.end();
+});
 // router.get('/myprofileUser', function(request, response) {
 //     if (request.session.loggedin) {
 //         response.send('BIENVENIDO DE VUELTA , ' + request.session.email + '!');
