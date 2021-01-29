@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <title>Inicio | NationGamer</title>
-  </head>
-  <body style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdU9D07HDPDec_r08jAfFS2VjcGxqLT0nM2Q&usqp=CAU);">
-    
-    <br>
-    <div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-2"></div>
-			<div class= "col-lg-8">
-				<div class="card" style="width: 100%;">
-					<img src="https://cdn.dribbble.com/users/754899/screenshots/3792916/gamepad.png" class="card-img-top" alt="gamer" style="height: 300px;">
-					<div class="card-body">
-						<form class="row g-3">
-							<div class="col-md-6">
-							  <label for="inputEmail4" class="form-label">Correo eléctronico</label>
-							  <input type="email" class="form-control" id="inputEmail4" placeholder="example@gmail.com">
-							</div>
-							<div class="col-md-6">
-							  <label for="inputPassword4" class="form-label">Contraseña</label>
-							  <input type="password" class="form-control" id="inputPassword4" placeholder="tu contraseña..."> 
-							</div>
-							<!-- <div class="col-12">
+
+<head>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <title>Inicio | NationGamer</title>
+</head>
+
+<body
+  style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdU9D07HDPDec_r08jAfFS2VjcGxqLT0nM2Q&usqp=CAU);">
+
+  <br>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8">
+        <div class="card" style="width: 100%;">
+          <img src="https://cdn.dribbble.com/users/754899/screenshots/3792916/gamepad.png" class="card-img-top"
+            alt="gamer" style="height: 300px;">
+          <div class="card-body">
+            <form class="row g-3" action="/auth" method="POST" >
+              <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Correo eléctronico</label>
+                <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="example@gmail.com">
+              </div>
+              <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" name="password" id="inputPassword4"
+                  placeholder="tu contraseña...">
+              </div>
+              <!-- <div class="col-12">
 							  <label for="inputAddress" class="form-label">Address</label>
 							  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
 							</div>
@@ -48,98 +53,101 @@
 							  <label for="inputZip" class="form-label">Zip</label>
 							  <input type="text" class="form-control" id="inputZip">
 							</div> -->
-							<div class="col-12">
-							  <div class="form-check">
-								<input class="form-check-input" type="checkbox" id="gridCheck">
-								<label class="form-check-label" for="gridCheck">
-								  Recordarme
-								</label>
-							  </div>
-							</div>
-							<div class="col-12">
-							  <button type="submit" class="btn btn-lg btn-success ">INICIAR SESION</button>
-							</div>
-						  </form>
-					</div>
-				  </div>
-			</div>
-			<div class="col-lg-2"></div>
-
-		</div>
-	</div>
-    <br>
-    <div class="container">
-      
-    </div><br>
-<!-- Footer -->
-<footer class="bg-dark text-white text-center text-lg-start">
-  <!-- Grid container -->
-  <div class="container p-4">
-    <!--Grid row-->
-    <div class="row">
-      <!--Grid column-->
-      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-        <h5 class="text-uppercase">ACERCA DE NOSOTROS</h5>
-
-        <p>
-          ¡Bienvenido a nuestro sitio web! Somos una empresa dedicada completamente a las recomendaciones de videojuegos. Nuestro objetivo es llegar a millones de personas a través de nuestras recomendaciones. 
-        </p>
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheck">
+                  <label class="form-check-label" for="gridCheck">
+                    Recordarme
+                  </label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-lg btn-success ">INICIAR SESION</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <!--Grid column-->
+      <div class="col-lg-2"></div>
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase">INFO</h5>
-
-        <ul class="list-unstyled mb-0">
-          <li>
-            <a href="#!" class="text-white">Link 1</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 2</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 3</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 4</a>
-          </li>
-        </ul>
-      </div>
-      <!--Grid column-->
-
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-        <h5 class="text-uppercase mb-0">REDES SOCIALES</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <a href="#!" class="text-white">Link 1</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 2</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 3</a>
-          </li>
-          <li>
-            <a href="#!" class="text-white">Link 4</a>
-          </li>
-        </ul>
-      </div>
-      <!--Grid column-->
     </div>
-    <!--Grid row-->
   </div>
-  <!-- Grid container -->
+  <br>
+  <div class="container">
 
-  <!-- Copyright -->
-  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-    © 2020 Copyright:
-    <a class="text-white" href="/games_admin">NationGamer2020</a>
-  </div>
-  <!-- Copyright -->
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script> </script>
-  </body>
+  </div><br>
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center text-lg-start">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">ACERCA DE NOSOTROS</h5>
+
+          <p>
+            ¡Bienvenido a nuestro sitio web! Somos una empresa dedicada completamente a las recomendaciones de
+            videojuegos. Nuestro objetivo es llegar a millones de personas a través de nuestras recomendaciones.
+          </p>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">INFO</h5>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-0">REDES SOCIALES</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!" class="text-white">Link 1</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 2</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 3</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Link 4</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2020 Copyright:
+      <a class="text-white" href="/games_admin">NationGamer2020</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  </script>
+</body>
+
 </html>
