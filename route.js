@@ -64,7 +64,7 @@ router.get('/dash',(req, res)=>{
 
 //Juegos ya validados
 router.get('/dashYaValidados',(req, res)=>{
-    conexion.query('select * from tbljuegos where status=1', (error, results)=>{
+    conexion.query('SELECT j.id_juegos,j.titulo, j.imagen, j.descripcion, COUNT(r.id_game) AS reco FROM tbljuegos as j INNER JOIN tblranking as r ON j.id_juegos = r.id_game WHERE j.status = 1 GROUP BY j.titulo ORDER BY reco DESC', (error, results)=>{
         if(error){
             throw error;
         }else{

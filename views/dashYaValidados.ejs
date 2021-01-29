@@ -5,7 +5,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <title>Inicio | NationGamer</title>
+    <title>Autorizados | NationGamer</title>
 </head>
 
 <body
@@ -52,15 +52,6 @@
         </div>
     </nav>
     <br>
-
-
-   
-
-    <form class="d-flex" style="padding-left: 25rem;">
-        <input class="form-control " style="width: 500px;" type="search" placeholder="Titulo del juego"
-            aria-label="Search">
-        <button class="btn btn-success" type="submit">Buscar</button>
-    </form>
     <br>
 
     <div class="container-fluid">
@@ -96,6 +87,7 @@
                                             <p class="card-text">
                                                 <%=juego.descripcion %>
                                             </p>
+                                            <p class="card-text"  > <strong>  Este juego ha sido recomendo <%=juego.reco %> veces </strong></p>
                                             <p class="card-text" hidden>
                                                 <%=juego.id_juegos %>
                                             </p>
