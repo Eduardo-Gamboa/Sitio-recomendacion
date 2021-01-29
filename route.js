@@ -36,7 +36,12 @@ router.get('/profile',(req, res)=>{
         if(error){
             throw error;
         }else{
-            res.render('profile', {results:results});
+            if (req.session.loggedin) {
+                res.render('profile', {results2:results2});
+            } else {
+                res.redirect('/inicieSesion');
+            }
+            
         }
     })
 })
