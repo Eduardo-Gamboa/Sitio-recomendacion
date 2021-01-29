@@ -56,17 +56,22 @@ router.get('/mygames',(req, res)=>{
     })
 })
 
-//Juegos que validará el admin xdxd
+//DASH
 router.get('/dash',(req, res)=>{
-    conexion.query('select * from tbljuegos where status=2 ', (error, results)=>{
-        if(error){
-            throw error;
-        }else{
-            req.session.loggedin = true;
-            res.render('dash', {results:results});
-        }
-    })
-})
+    if (req.session.loggedin =! true) {
+        res.redirect('/inicieSesion');
+    }
+    else{
+        conexion.query('select * from tbljuegos where status=2', (error, results)=>{
+            if(error){
+                throw error;
+            }else{
+                req.session.loggedin = true;
+                res.render('dash', {results:results});
+            }
+        })
+    }
+});
 
 //Juegos ya validados
 router.get('/dashYaValidados',(req, res)=>{
