@@ -29,19 +29,16 @@ router.get('/',(req, res)=>{
     })
 })
 
-
-
 router.get('/profile',(req, res)=>{
     conexion.query('SELECT j.id_juegos,j.titulo, j.imagen, j.descripcion, COUNT(r.id_game) AS reco FROM tbljuegos as j INNER JOIN tblranking as r ON j.id_juegos = r.id_game WHERE j.status = 1 GROUP BY j.titulo ORDER BY reco DESC', (error, results)=>{
         if(error){
             throw error;
         }else{
             if (req.session.loggedin) {
-                res.render('profile', {results2:results2});
+                res.render('profile', {results:results});
             } else {
                 res.redirect('/inicieSesion');
             }
-            
         }
     })
 })
@@ -73,6 +70,20 @@ router.get('/dash',(req, res)=>{
     }
 });
 
+
+//cerrar session
+router.post('/logout', function(request, response) {
+    request.session.loggedin = false;
+    response.redirect('/');
+    // if (request.session.loggedin) {
+    //     request.session.loggedin = false;
+    //     response.redirect('/');
+    // } else {
+    //     response.redirect('/inicieSesion');
+    // }
+    response.end();
+});
+
 //Juegos ya validados
 router.get('/dashYaValidados',(req, res)=>{
     conexion.query('SELECT j.id_juegos,j.titulo, j.imagen, j.descripcion, COUNT(r.id_game) AS reco FROM tbljuegos as j INNER JOIN tblranking as r ON j.id_juegos = r.id_game WHERE j.status = 1 GROUP BY j.titulo ORDER BY reco DESC', (error, results)=>{
@@ -94,7 +105,12 @@ router.get('/profile',(req, res)=>{
 })
 
 router.get('/login',(req, res)=>{
+    req.session.loggedin = false;
     res.render('login')
+})
+
+router.get('/inicieSesion',(req, res)=>{
+    res.render('inicieSesion')
 })
 
 // //Juegos ya validados
@@ -129,6 +145,7 @@ router.get('/myprofileUser2', function (req, res) {
 });
 
 
+
 // router.get('/myprofileUser', function(request, response) {
 //     if (request.session.loggedin) {
 //         response.send('BIENVENIDO DE VUELTA , ' + request.session.email + '!');
@@ -161,6 +178,10 @@ router.get('/dash',(req, res)=>{
     res.render('dash')
 })
 
+router.get('/recomendar',(req, res)=>{
+    res.render('recomendar')
+})
+
 router.get('/dashYaValidados',(req, res)=>{
     res.render('dashYaValidados')
 })
@@ -181,6 +202,17 @@ router.get('/edit/:id_juegos', (req,res)=>{
             throw error;
         }else{
             res.render('edit', {juego:results[0]});
+        }
+    })
+})
+
+router.get('/recomendar/:id_juegos', (req,res)=>{
+    const id_juegos= req.params.id_juegos;
+    conexion.query('SELECT * FROM tbljuegos WHERE id_juegos=?',[id_juegos], (error, results)=>{
+        if(error){
+            throw error;
+        }else{
+            res.render('recomendar', {juego:results[0]});
         }
     })
 })
@@ -230,6 +262,7 @@ const { json } = require('express');
 router.post('/save', crud.save);
 router.post('/save_juego', crud.save_juego);
 router.post('/editar_juego', crud.editar_juego);
+router.post('/save_reco', crud.save_reco);
 
 // //login
 
@@ -266,8 +299,10 @@ router.post('/auth', function (req, res) {
                 console.log(req.session.password);
 
                 if(req.session.email == 'admin@admin.com'){
+                    req.session.loggedin = true;
                     res.redirect('/dash')
                 }else{
+                    req.session.loggedin = true;
                     res.render('myprofileUser', {datos: datos});
                 }
 

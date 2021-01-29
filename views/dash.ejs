@@ -34,8 +34,13 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">MI PERFIL</a></li>
-              <li><a class="dropdown-item" href="/">CERRAR SESIÓN</a></li>
-              
+              <li>
+                <form action="/logout" method="POST">
+                  <button class="dropdown-item" type="submit">CERRAR SESIÓN</a>
+                </form>
+
+              </li>
+
             </ul>
           </li>
         </ul>
