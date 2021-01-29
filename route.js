@@ -10,22 +10,33 @@ var path = require('path');
 
 const app = express();
 
+router.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
+
 router.get('/',(req, res)=>{
     conexion.query('SELECT j.id_juegos,j.titulo, j.imagen, j.descripcion, COUNT(r.id_game) AS reco FROM tbljuegos as j INNER JOIN tblranking as r ON j.id_juegos = r.id_game WHERE j.status = 1 GROUP BY j.titulo ORDER BY reco DESC', (error, results)=>{
         if(error){
-            throw error;    
+            throw error;
         }else{
             res.render('index', {results:results});
         }
     })
 })
 
+
+
 router.get('/profile',(req, res)=>{
-    conexion.query('select * from tbljuegos where status=1', (error, results)=>{
+    conexion.query('select * from tbljuegos where status=1', (error, results2)=>{
         if(error){
-            throw error;    
+            throw error;
         }else{
-            res.render('profile', {results:results});
+            res.render('profile', {results2:results2});
         }
     })
 })
@@ -33,7 +44,7 @@ router.get('/profile',(req, res)=>{
 router.get('/mygames',(req, res)=>{
     conexion.query('select * from tbljuegos where status=2', (error, results)=>{
         if(error){
-            throw error;    
+            throw error;
         }else{
             res.render('mygames', {results:results});
         }
@@ -44,7 +55,7 @@ router.get('/mygames',(req, res)=>{
 router.get('/dash',(req, res)=>{
     conexion.query('select * from tbljuegos where status=2', (error, results)=>{
         if(error){
-            throw error;    
+            throw error;
         }else{
             res.render('dash', {results:results});
         }
@@ -55,7 +66,7 @@ router.get('/dash',(req, res)=>{
 router.get('/dashYaValidados',(req, res)=>{
     conexion.query('select * from tbljuegos where status=1', (error, results)=>{
         if(error){
-            throw error;    
+            throw error;
         }else{
             res.render('dashYaValidados', {results:results});
         }
@@ -75,6 +86,45 @@ router.get('/login',(req, res)=>{
     res.render('login')
 })
 
+// //Juegos ya validados
+router.get('/myprofileUser2', function (req, res) {
+    if (req.session.loggedin) {
+        var email = req.session.email;
+        var password = req.session.password;
+        conexion.query('SELECT * FROM tblusuarios WHERE correo = ? AND contra = ?', [email, password], function (error, datos, fields) {
+            // res.render('myprofileUser2', {datos: datos});
+            console.log(datos);
+            // if (datos.length > 0) {
+            //     // const data = JSON.parse(JSON.stringify(datos));
+            //     // // var id = data[0][];
+            //     // console.log("EL ID DEL USUARIOOOOOOOOOOOOOOOO");
+            //     // console.log(data);
+            //     // req.session.loggedin = true;
+            //     // req.session.email = email;
+            //     // req.session.password = password;
+
+            //     // console.log(req.session.password);
+
+
+            // } else {
+            //     res.send('Incorrect Username and/or Password!');
+            // }
+            res.end();
+        });
+    } else {
+        res.send('Please login to view this page!');
+    }
+    res.end();
+});
+
+// router.get('/myprofileUser', function(request, response) {
+//     if (request.session.loggedin) {
+//         response.send('BIENVENIDO DE VUELTA , ' + request.session.email + '!');
+//     } else {
+//         response.send('Please login to view this page!');
+//     }
+//     response.end();
+// });
 // router.get('/auth',(req, res)=>{
 //     res.set('auth')
 // })
@@ -103,26 +153,34 @@ router.get('/dashYaValidados',(req, res)=>{
     res.render('dashYaValidados')
 })
 
+router.get('/myprofileUser',(req, res)=>{
+    res.render('myprofileUser')
+})
+
+router.get('/myprofileUser2',(req, res)=>{
+    res.render('myprofileUser2')
+})
+
 
 router.get('/edit/:id_juegos', (req,res)=>{
     const id_juegos= req.params.id_juegos;
     conexion.query('SELECT * FROM tbljuegos WHERE id_juegos=?',[id_juegos], (error, results)=>{
         if(error){
-            throw error;    
+            throw error;
         }else{
             res.render('edit', {juego:results[0]});
         }
     })
 })
 
-/*Buscador*/ 
+/*Buscador*/
 router.post('/',(req, res)=>{
     const busqueda = req.body.busqueda;
     const sqlquery = "select * from tbljuegos where status=1 and titulo LIKE '%"+busqueda+"%'";
     console.log(sqlquery);
     conexion.query(sqlquery ,(error, results)=>{
         if(error){
-            throw error;    
+            throw error;
         }else{
             res.render('index', {results:results});
         }
@@ -130,12 +188,12 @@ router.post('/',(req, res)=>{
 })
 
 
-/*ELIMINAR*/ 
+/*ELIMINAR*/
 router.get('/delete/:id_juegos', (req, res)=>{
-    const id_juegos= req.params.id_juegos; 
+    const id_juegos= req.params.id_juegos;
     conexion.query('DELETE FROM tbljuegos WHERE id_juegos=?',[id_juegos], (error, results)=> {
         if(error){
-            throw error;    
+            throw error;
         }else{
             res.redirect('/dash');
         }
@@ -153,14 +211,7 @@ router.post('/editar_juego', crud.editar_juego);
 // // const conexion = require('../conexion/conexion');
 
 
-router.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
-}));
 
-router.use(bodyParser.urlencoded({ extended: true }));
-router.use(bodyParser.json());
 
 // app.get('/login',(req, res)=>{
 //     res.render('login')
@@ -176,18 +227,36 @@ router.post('/auth', function (req, res) {
     var password = req.body.password;
     if (email && password) {
         // check if user exists
-        // var id = conexion.query('SELECT id_user FROM tblusuarios WHERE correo = ? AND contra = ?', [email, password]); 
-        conexion.query('SELECT * FROM tblusuarios WHERE correo = ? AND contra = ?', [email, password], function (error, results, fields) {
-            if (results.length > 0) {
-                // var id = results.RowDataPacket.id_user;
-                const data = JSON.parse(JSON.stringify(results));
+        // var id = conexion.query('SELECT id_user FROM tblusuarios WHERE correo = ? AND contra = ?', [email, password]);
+        conexion.query('SELECT * FROM tblusuarios WHERE correo = ? AND contra = ?', [email, password], function (error, datos, fields) {
+            if (datos.length > 0) {
+                const data = JSON.parse(JSON.stringify(datos));
                 // var id = data[0][];
                 console.log("EL ID DEL USUARIOOOOOOOOOOOOOOOO");
                 console.log(data);
                 req.session.loggedin = true;
                 req.session.email = email;
-                console.log(email);
-                res.render('profile', {results: results});
+                req.session.password = password;
+
+                console.log(req.session.password);
+
+                if(req.session.email == 'admin@admin.com'){
+                    res.redirect('/dash')
+                }else{
+                    res.render('myprofileUser', {datos: datos});
+                }
+
+                
+
+
+                // res.redirect('/myprofileUser');
+                //res.send(datos)
+                // var admin = "admin@admin.com"
+                // if(email === admin)
+                //     res.render('dash', {results: results});
+                // else
+                //  if(email != admin)
+                //     res.render('profile', {results: results});
 
             } else {
                 res.send('Incorrect Username and/or Password!');
@@ -200,16 +269,11 @@ router.post('/auth', function (req, res) {
     }
 });
 
-router.get('/profile', function(request, response) {
-    if (request.session.loggedin) {
-        response.send('BIENVENIDO DE VUELTA , ' + request.session.correo + '!');
-    } else {
-        response.send('Please login to view this page!');
-    }
-    response.end();
-});
+
+
+
 
 
 // //end login
-  
+
 module.exports = router;
