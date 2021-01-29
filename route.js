@@ -85,7 +85,7 @@ router.get('/mygames',(req, res)=>{
     })
 });
 
-//Juegos que validará el admin xdxd
+//DASH
 router.get('/dash',(req, res)=>{
     if (req.session.loggedin =! true) {
         res.redirect('/inicieSesion');
