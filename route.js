@@ -62,6 +62,7 @@ router.get('/dash',(req, res)=>{
         if(error){
             throw error;
         }else{
+            req.session.loggedin = true;
             res.render('dash', {results:results});
         }
     })
