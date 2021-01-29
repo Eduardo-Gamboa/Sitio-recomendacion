@@ -20,15 +20,16 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 router.get('/',(req, res)=>{
+    req.session.loggedin = false;
     conexion.query('SELECT j.id_juegos,j.titulo, j.imagen, j.descripcion, COUNT(r.id_game) AS reco FROM tbljuegos as j INNER JOIN tblranking as r ON j.id_juegos = r.id_game WHERE j.status = 1 GROUP BY j.titulo ORDER BY reco DESC', (error, results)=>{
         if(error){
             throw error;
         }else{
+            // req.session.loggedin = false;
             res.render('index', {results:results});
         }
     })
-})
-
+});
 
 
 router.get('/profile',(req, res)=>{
@@ -36,31 +37,70 @@ router.get('/profile',(req, res)=>{
         if(error){
             throw error;
         }else{
-            res.render('profile', {results2:results2});
+            if (req.session.loggedin) {
+                res.render('profile', {results2:results2});
+            } else {
+                res.redirect('/inicieSesion');
+            }
+            
         }
     })
 })
+
+//Si la sesión está iniciada, no puede ir al dash ni al index
+// router.get('/myprofileUser', function(request, response) {
+//     if (request.session.loggedin) {
+//         response.send('BIENVENIDO DE VUELTA , ' + request.session.email + '!');
+//     } else {
+//         response.redirect('/inicieSesion');
+//     }
+//     response.end();
+// });
+
+// router.get('/profile', function(request, response) {
+//     if (request.session.loggedin) {
+//         response.send('BIENVENIDO DE VUELTA , ' + request.session.email + '!');
+//     } else {
+//         response.redirect('/inicieSesion');
+//     }
+//     response.end();
+// });
+
+// router.get('/dash', function(request, response) {
+//     if (request.session.loggedin =! true) {
+//         response.redirect('/inicieSesion');
+//     } 
+//     response.end();
+// });
 
 router.get('/mygames',(req, res)=>{
     conexion.query('select * from tbljuegos where status=2', (error, results)=>{
         if(error){
             throw error;
         }else{
+            
+            
             res.render('mygames', {results:results});
         }
     })
-})
+});
 
 //Juegos que validará el admin xdxd
 router.get('/dash',(req, res)=>{
-    conexion.query('select * from tbljuegos where status=2', (error, results)=>{
-        if(error){
-            throw error;
-        }else{
-            res.render('dash', {results:results});
-        }
-    })
-})
+    if (req.session.loggedin =! true) {
+        res.redirect('/inicieSesion');
+    }
+    else{
+        conexion.query('select * from tbljuegos where status=2', (error, results)=>{
+            if(error){
+                throw error;
+            }else{
+                req.session.loggedin = true;
+                res.render('dash', {results:results});
+            }
+        })
+    }
+});
 
 //Juegos ya validados
 router.get('/dashYaValidados',(req, res)=>{
@@ -83,16 +123,21 @@ router.get('/profile',(req, res)=>{
 })
 
 router.get('/login',(req, res)=>{
+    req.session.loggedin = false;
     res.render('login')
 })
 
+router.get('/inicieSesion',(req, res)=>{
+    res.render('inicieSesion')
+})
+
 // //Juegos ya validados
-router.get('/myprofileUser2', function (req, res) {
+router.post('/miperfil', function (req, res) {
     if (req.session.loggedin) {
         var email = req.session.email;
         var password = req.session.password;
         conexion.query('SELECT * FROM tblusuarios WHERE correo = ? AND contra = ?', [email, password], function (error, datos, fields) {
-            // res.render('myprofileUser2', {datos: datos});
+            res.render('myprofileUser2', {datos: datos});
             console.log(datos);
             // if (datos.length > 0) {
             //     // const data = JSON.parse(JSON.stringify(datos));
@@ -117,17 +162,25 @@ router.get('/myprofileUser2', function (req, res) {
     res.end();
 });
 
-// router.get('/myprofileUser', function(request, response) {
-//     if (request.session.loggedin) {
-//         response.send('BIENVENIDO DE VUELTA , ' + request.session.email + '!');
-//     } else {
-//         response.send('Please login to view this page!');
-//     }
-//     response.end();
-// });
+
+
 // router.get('/auth',(req, res)=>{
 //     res.set('auth')
-// })
+// });
+
+
+//cerrar session
+router.post('/logout', function(request, response) {
+    if (request.session.loggedin) {
+        request.session.loggedin = false;
+        response.redirect('/');
+    } else {
+        response.redirect('/inicieSesion');
+    }
+    response.end();
+});
+
+//END METODO
 
 // app.get('/loginjeje', function (request, response) {
 //     response.sendFile(path.join(__dirname, '../views' , '/login.html'));
@@ -241,6 +294,7 @@ router.post('/auth', function (req, res) {
                 console.log(req.session.password);
 
                 if(req.session.email == 'admin@admin.com'){
+                    req.session.loggedin = true;
                     res.redirect('/dash')
                 }else{
                     res.render('myprofileUser', {datos: datos});

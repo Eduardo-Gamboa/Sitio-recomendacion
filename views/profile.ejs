@@ -35,28 +35,37 @@
                 </ul>
                 <ul>
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        
-                        MENÚ
-                      </a>
-                        
-                   
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">MI PERFIL</a></li>
-                        <li><a class="dropdown-item" href="/">CERRAR SESIÓN</a></li>
-                        <li>
-                          <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">AJUSTES</a></li>
-                      </ul>
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+
+                            MENÚ
+                        </a>
+
+
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <form action="/miperfil" method="POST">
+                                    <button type="submit" class="dropdown-item">MI PERFIL</a>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="/logout" method="POST">
+                                    <button class="dropdown-item" type="submit">CERRAR SESIÓN</a>
+                                </form>
+                            
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">AJUSTES</a></li>
+                        </ul>
                     </li>
                 </ul>
                 <ul>
                     <li class="navbar-text">
-                      <a class="nav-link active" aria-current="page" href="#"></a>
+                        <a class="nav-link active" aria-current="page" href="#"></a>
                     </li>
-                  </ul>
+                </ul>
             </div>
         </div>
     </nav>
