@@ -45,7 +45,7 @@ router.get('/profile',(req, res)=>{
             
         }
     })
-})
+});
 
 //Si la sesión está iniciada, no puede ir al dash ni al index
 // router.get('/myprofileUser', function(request, response) {
