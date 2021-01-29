@@ -32,17 +32,17 @@ router.get('/',(req, res)=>{
 
 
 router.get('/profile',(req, res)=>{
-    conexion.query('select * from tbljuegos where status=1', (error, results2)=>{
+    conexion.query('SELECT j.id_juegos,j.titulo, j.imagen, j.descripcion, COUNT(r.id_game) AS reco FROM tbljuegos as j INNER JOIN tblranking as r ON j.id_juegos = r.id_game WHERE j.status = 1 GROUP BY j.titulo ORDER BY reco DESC', (error, results)=>{
         if(error){
             throw error;
         }else{
-            res.render('profile', {results2:results2});
+            res.render('profile', {results:results});
         }
     })
 })
 
 router.get('/mygames',(req, res)=>{
-    conexion.query('select * from tbljuegos where status=2', (error, results)=>{
+    conexion.query('select * from tbljuegos where status=2 ', (error, results)=>{
         if(error){
             throw error;
         }else{
@@ -53,7 +53,7 @@ router.get('/mygames',(req, res)=>{
 
 //Juegos que validará el admin xdxd
 router.get('/dash',(req, res)=>{
-    conexion.query('select * from tbljuegos where status=2', (error, results)=>{
+    conexion.query('select * from tbljuegos where status=2 ', (error, results)=>{
         if(error){
             throw error;
         }else{
@@ -176,13 +176,26 @@ router.get('/edit/:id_juegos', (req,res)=>{
 /*Buscador*/
 router.post('/',(req, res)=>{
     const busqueda = req.body.busqueda;
-    const sqlquery = "select * from tbljuegos where status=1 and titulo LIKE '%"+busqueda+"%'";
+    const sqlquery = "SELECT j.id_juegos,j.titulo, j.imagen, j.descripcion, COUNT(r.id_game) AS reco FROM tbljuegos as j INNER JOIN tblranking as r ON j.id_juegos = r.id_game WHERE j.status = 1 and titulo LIKE '%"+busqueda+"%'";
     console.log(sqlquery);
     conexion.query(sqlquery ,(error, results)=>{
         if(error){
             throw error;
         }else{
             res.render('index', {results:results});
+        }
+    })
+})
+
+router.post('/profile',(req, res)=>{
+    const busqueda2 = req.body.busqueda2;
+    const sqlquery = "SELECT j.id_juegos,j.titulo, j.imagen, j.descripcion, COUNT(r.id_game) AS reco FROM tbljuegos as j INNER JOIN tblranking as r ON j.id_juegos = r.id_game WHERE j.status = 1 and titulo LIKE '%"+busqueda2+"%'";
+    console.log(sqlquery);
+    conexion.query(sqlquery ,(error, results)=>{
+        if(error){
+            throw error;
+        }else{
+            res.render('profile', {results:results});
         }
     })
 })

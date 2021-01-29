@@ -28,6 +28,17 @@ exports.save_juego = (req, res)=>{
     } )
 };
 
+exports.save_reco = (req, res)=>{
+    const id_usu = req.body.id_usu;
+    const id_juego = req.body.id_juego;
+    conexion.query('INSERT INTO tblranking SET?',{id_usu:id_usu, id_juego:id_usu}, (error,results)=>{
+        if(error){
+            console.log(error);
+        }else{
+            res.redirect('/mygames');
+        }
+    } )
+};
 
 exports.editar_juego = (req,res)=>{
     const id_juegos= req.body.id_juegos;

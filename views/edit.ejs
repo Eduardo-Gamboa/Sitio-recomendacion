@@ -50,8 +50,9 @@
                 <form action="/editar_juego" method="POST">
                   <input type="hidden" id="id_juegos" class="form-control" name="id_juegos" value="<%=juego.id_juegos%>" tabindex="1" >
                   <div class="form-group">
-                    <label>Seguro de Autorizar la Siguiente Recomendación</label>
+                    <label style="text-align: center;">¡Seguro de Autorizar la Siguiente Recomendación!</label>
                   </div>
+                  <br>
                   <div class="form-group">
                     <label>Titulo</label>
                     <input type="text" id="titulo" class="form-control" name="titulo" value="<%=juego.titulo%>" tabindex="1" >
@@ -60,13 +61,11 @@
                   <div class="form-group">
                     <input type="hidden" id="imagen" class="form-control" name="imagen" value="<%=juego.imagen%>" tabindex="2" >
                   </div>
-                  <br>
                   <div class="form-group">
                     <input type="hidden" id="descripcion" class="form-control" name="descripcion" value="<%=juego.descripcion%>" tabindex="3" >
                   </div>
-                  <br>
                   <div class="form-group">
-                        <input type="hidden" id="status" class="form-control" name="status" value="2" tabindex="4" >
+                        <input type="hidden" id="status" class="form-control" name="status" value="1" tabindex="4" >
                     </div>
                     <br>
                   <div class="form-group">
@@ -78,6 +77,38 @@
         </div>
     </div>
     <% } %>
+
+  </div><br>
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center text-lg-start">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5 class="text-uppercase">ACERCA DE NOSOTROS</h5>
+
+          <p>
+            ¡Bienvenido a nuestro sitio web! Somos una empresa dedicada completamente a las recomendaciones de
+            videojuegos. Nuestro objetivo es llegar a millones de personas a través de nuestras recomendaciones.
+          </p>
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2020 Copyright:
+      <a class="text-white" href="https://www.facebook.com/GHOSHBABU22">NationGamer2020</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script> </script>
   </body>
 </html>

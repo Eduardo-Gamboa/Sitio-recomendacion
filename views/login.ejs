@@ -5,63 +5,58 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-  <title>Inicio | NationGamer</title>
+  <title>Login | NationGamer</title>
 </head>
 
 <body
   style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdU9D07HDPDec_r08jAfFS2VjcGxqLT0nM2Q&usqp=CAU);">
-
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="https://cdn.pixabay.com/photo/2016/11/19/00/10/gamepad-1837422_960_720.png"  style="width:150px; height:80px" alt="logo"></a>
+      <a class="navbar-brand" href="/">NationGamer</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+          </li>
+        </ul>
+        <ul>
+          <li class="navbar-text">
+            <a class="nav-link active"  aria-current="page" href="/create">Registrate</a>
+          </li>
+          
+        </ul> 
+        <ul>
+          <li class="navbar-text">
+            <a class="nav-link active" aria-current="page" href="/login">Iniciar Sesion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
   <br>
-  <div class="container-fluid">
+  <div class="container" style="padding: 0  350px;">
     <div class="row">
-      <div class="col-lg-2"></div>
-      <div class="col-lg-8">
-        <div class="card" style="width: 100%;">
-          <img src="https://cdn.dribbble.com/users/754899/screenshots/3792916/gamepad.png" class="card-img-top"
-            alt="gamer" style="height: 300px;">
+      <div class="col-lg-12">
+        <div class="card mb-3" style="max-width: 455px;">
+          <h2 class="card-title" style="text-align: center;">Inicia Sesión</h2>
+          <img src="https://i.blogs.es/7bb0c9/videogame/450_1000.jpg" class="card-img-top"
+            alt="gamer" style="height: 300px; width: 437px;">
           <div class="card-body">
             <form class="row g-3" action="/auth" method="POST">
-              <div class="col-md-6">
+              <div class="form-group">
                 <label for="inputEmail4" class="form-label">Correo eléctronico</label>
                 <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="example@gmail.com">
               </div>
-              <div class="col-md-6">
+              <div class="form-group">
                 <label for="inputPassword4" class="form-label">Contraseña</label>
                 <input type="password" class="form-control" name="password" id="inputPassword4"
                   placeholder="tu contraseña...">
               </div>
-              <!-- <div class="col-12">
-							  <label for="inputAddress" class="form-label">Address</label>
-							  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-							</div>
-							<div class="col-12">
-							  <label for="inputAddress2" class="form-label">Address 2</label>
-							  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-							</div>
-							<div class="col-md-6">
-							  <label for="inputCity" class="form-label">City</label>
-							  <input type="text" class="form-control" id="inputCity">
-							</div> 
-							<div class="col-md-4">
-							  <label for="inputState" class="form-label">State</label>
-							  <select id="inputState" class="form-select">
-								<option selected>Choose...</option>
-								<option>...</option>
-							  </select>
-							</div>
-							<div class="col-md-2">
-							  <label for="inputZip" class="form-label">Zip</label>
-							  <input type="text" class="form-control" id="inputZip">
-							</div> -->
-              <div class="col-12">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="gridCheck">
-                  <label class="form-check-label" for="gridCheck">
-                    Recordarme
-                  </label>
-                </div>
-              </div>
-              <div class="col-12">
+              <div class="col-12" style="padding-right: 50px ;"></div>
                 <button type="submit" class="btn btn-lg btn-success ">INICIAR SESION</button>
               </div>
             </form>
@@ -92,48 +87,6 @@
           </p>
         </div>
         <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase">INFO</h5>
-
-          <ul class="list-unstyled mb-0">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-0">REDES SOCIALES</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="#!" class="text-white">Link 1</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 2</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 3</a>
-            </li>
-            <li>
-              <a href="#!" class="text-white">Link 4</a>
-            </li>
-          </ul>
-        </div>
-        <!--Grid column-->
       </div>
       <!--Grid row-->
     </div>
@@ -142,7 +95,7 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
       © 2020 Copyright:
-      <a class="text-white" href="/games_admin">NationGamer2020</a>
+      <a class="text-white" href="https://www.facebook.com/GHOSHBABU22">NationGamer2020</a>
     </div>
     <!-- Copyright -->
   </footer>
