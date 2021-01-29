@@ -30,12 +30,12 @@ exports.save_juego = (req, res)=>{
 
 exports.save_reco = (req, res)=>{
     const id_usu = req.body.id_usu;
-    const id_juego = req.body.id_juego;
-    conexion.query('INSERT INTO tblranking SET?',{id_usu:id_usu, id_juego:id_usu}, (error,results)=>{
+    const id_game = req.body.id_game;
+    conexion.query('INSERT INTO tblranking SET?',{id_usu:id_usu, id_game:id_game}, (error,results)=>{
         if(error){
             console.log(error);
         }else{
-            res.redirect('/mygames');
+            res.redirect('/profile');
         }
     } )
 };

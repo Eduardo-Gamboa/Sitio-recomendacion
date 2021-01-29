@@ -82,9 +82,8 @@
                                 <h5 class="card-title"><%=juego.titulo %> </h5>
                                 <p class="card-text"><small class="text-muted">Descripción:</small></p>
                                 <p class="card-text"><%=juego.descripcion %></p>
-                                <p class="card-text"><small class="text-muted">3 mins ago</small></p>
-                                <p class="card-text" hidden><%=juego.id_juegos%></p>
-
+                                <input type="hidden" id="id_game" class="form-control" name="id_game" value="<%=juego.id_juegos%>">
+                                <input type="hidden" id="id_usu" class="form-control" name="id_usu" value="1">
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-lg btn-primary" tabindex="5">Recomendar</button>
                                     <a href="/profile" class="btn btn-lg btn-secondary">Cancelar</a>
