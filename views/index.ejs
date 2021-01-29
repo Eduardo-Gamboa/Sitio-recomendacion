@@ -8,9 +8,12 @@
   </head>
   <body style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdU9D07HDPDec_r08jAfFS2VjcGxqLT0nM2Q&usqp=CAU);">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+      <a class="navbar-brand" href="/"><img src="https://cdn.pixabay.com/photo/2016/11/19/00/10/gamepad-1837422_960_720.png"  style="width:150px; height:80px" alt="logo"></a>
+      <br>  
+      <a class="navbar-brand" href="/">NationGamer</a>
+
       <div class="container-fluid">
-        <a class="navbar-brand" href="/"><img src="https://cdn.pixabay.com/photo/2016/11/19/00/10/gamepad-1837422_960_720.png"  style="width:150px; height:80px" alt="logo"></a>
-        <a class="navbar-brand" href="/">NationGamer</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,7 +40,7 @@
       </div>
     </nav>
     <br>
-    <form class="d-flex" style="padding-left: 25rem;">
+    <form class="d-flex" action="/" method="POST" style="padding-left: 25rem;">
       <input class="form-control " style="width: 500px;" type="search" placeholder="Titulo del juego" aria-label="Search">
       <button class="btn btn-success"  type="submit">Buscar</button>
     </form>
@@ -53,6 +56,7 @@
             <div class="card-body">
               <h5 class="card-title"><%=juego.titulo %></h5>
               <p class="card-text"><%=juego.descripcion %></p>
+              <p class="card-text"  > <strong>  Este juego ha sido recomendo <%=juego.reco %> veces </strong></p>
               <p class="card-text" hidden><%=juego.id_juegos %></p>
             </div>
           </div>

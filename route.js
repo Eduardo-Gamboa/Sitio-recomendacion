@@ -5,7 +5,7 @@ const conexion =  require('./conexion/conexion');
 
 
 router.get('/',(req, res)=>{
-    conexion.query('select * from tbljuegos where status=1', (error, results)=>{
+    conexion.query('SELECT j.id_juegos,j.titulo, j.imagen, j.descripcion, COUNT(r.id_game) AS reco FROM tbljuegos as j INNER JOIN tblranking as r ON j.id_juegos = r.id_game WHERE j.status = 1 GROUP BY j.titulo ORDER BY reco DESC', (error, results)=>{
         if(error){
             throw error;    
         }else{
@@ -24,6 +24,21 @@ router.get('/mygames',(req, res)=>{
         }
     })
 })
+
+/*Buscador*/ 
+router.post('/',(req, res)=>{
+    const busqueda = req.body.busqueda;
+    const sqlquery = "select * from tbljuegos where status=1 and titulo LIKE '%"+busqueda+"%'";
+    console.log(sqlquery);
+    conexion.query(sqlquery ,(error, results)=>{
+        if(error){
+            throw error;    
+        }else{
+            res.render('index', {results:results});
+        }
+    })
+})
+
 
 
 router.get('/create',(req, res)=>{
