@@ -22,9 +22,9 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Inicio</a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link active"   aria-current="page" href="/mygames">Mis Juegos</a>
-            </li>
+            </li> -->
           </ul>
           <ul>
             <li class="navbar-text">
@@ -33,7 +33,7 @@
           </ul> 
           <ul>
             <li class="navbar-text">
-              <a class="nav-link active" aria-current="page" href="login.html">Iniciar Sesion</a>
+              <a class="nav-link active" aria-current="page" href="login">Iniciar Sesion</a>
             </li>
           </ul>
         </div>
@@ -47,29 +47,35 @@
     <br>
     <div class="container">
       <% results.forEach((juego)=> { %>
-      <div class="card mb-3" style="max-width: 1020px;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="<%=juego.imagen %>"  style="width:210px; height:280px" alt="...">
-          </div>
-          <div class="col-md-6">
-            <div class="card-body">
-              <h5 class="card-title"><%=juego.titulo %></h5>
-              <p class="card-text"><%=juego.descripcion %></p>
-              <p class="card-text"  > <strong>  Este juego ha sido recomendo <%=juego.reco %> veces </strong></p>
-              <p class="card-text" hidden><%=juego.id_juegos %></p>
+        <div class="card mb-3" style="max-width: 1020px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="<%=juego.imagen %>" style="width:240px; height:320px" alt="...">
+                </div>
+                <div class="col-md-6">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=juego.titulo %>
+                        </h5>
+                        <p class="card-text">
+                            <%=juego.descripcion %>
+                        </p>
+                        <p class="card-text" hidden>
+                            <%=juego.id_juegos %>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card-body">
+                        <!-- <a href="/edit/<%=juego.id_juegos %>" class="btn btn-primary">Aceptar <br></a>
+                        <br><br>
+                        <a href="/delete/<%=juego.id_juegos %>" class="btn btn-danger">Eliminar</a> -->
+                        <h6>RECOMENDADO</h2>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="col-md-2">
-            <div class="card-body">
-              <a href="/edit/<%=juego.id_juegos %>" class="btn btn-primary">Aceptar</a>
-              <br>
-              <a href="/delete/<%=juego.id_juegos %>" class="btn btn-danger">Eliminar</a>
-            </div>
-          </div>
         </div>
-      </div>
-      <%})%>
+        <%})%>
     </div><br>
 <!-- Footer -->
 <footer class="bg-dark text-white text-center text-lg-start">

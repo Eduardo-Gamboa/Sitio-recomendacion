@@ -13,7 +13,7 @@ const app = express();
 
 
 router.get('/',(req, res)=>{
-    conexion.query('select * from tbljuegos where status=1', (error, results)=>{
+    conexion.query('select * from tbljuegos where status=2', (error, results)=>{
         if(error){
             throw error;    
         }else{
@@ -106,6 +106,21 @@ router.get('/edit/:id_juegos', (req,res)=>{
         }
     })
 })
+
+/*Buscador*/ 
+router.post('/',(req, res)=>{
+    const busqueda = req.body.busqueda;
+    const sqlquery = "select * from tbljuegos where status=1 and titulo LIKE '%"+busqueda+"%'";
+    console.log(sqlquery);
+    conexion.query(sqlquery ,(error, results)=>{
+        if(error){
+            throw error;    
+        }else{
+            res.render('index', {results:results});
+        }
+    })
+})
+
 
 /*ELIMINAR*/ 
 router.get('/delete/:id_juegos', (req, res)=>{
