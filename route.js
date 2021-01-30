@@ -318,15 +318,14 @@ router.post('/auth', function (req, res) {
                 //  if(email != admin)
                 //     res.render('profile', {results: results});
 
-            } else {
-                res.send('Incorrect Username and/or Password!');
+            } 
+            else {
+                // res.send('Incorrect Username and/or Password!');
+                res.redirect('/create');
             }
             res.end();
         });
-    } else {
-        res.send('Please enter Username and Password!');
-        res.end();
-    }
+    } 
 });
 
 

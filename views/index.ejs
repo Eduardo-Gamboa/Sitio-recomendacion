@@ -5,6 +5,12 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+  <style rel="stylesheet">
+    .redondo{
+      border-radius: 20px 20px 20px 20px;
+    }
+  </style>
   <title>Inicio | NationGamer</title>
 </head>
 
@@ -45,6 +51,56 @@
       </div>
     </div>
   </nav>
+  <br>
+
+<div class="container-md">
+
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></li>
+      <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></li>
+    </ol>
+
+    <h2 class="text-center text-white">¡Bienvenido a | NationGamer!</h2>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://i0.wp.com/www.mundoplayers.com/wp-content/uploads/2019/05/halo-5-guardians_1.jpg?w=1064&ssl=1" class="d-block w-100 redondo" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>H A L O  5</h5>
+          <p>Uno de los juegos más innovadores de todos los tiempos.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.blogs.es/70c8a4/backcompatibility_visid_comingsoon-ca2f/450_1000.png" class="d-block w-100 redondo" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>GEARS OF WARS 3</h5>
+          <p>Gears of War es un videojuego de disparos en tercera persona, del género acción-aventura y estrategia, desarrollado por Epic Games utilizando el motor de videojuego Unreal Engine 3.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.blogs.es/0af906/gearstactics1/1366_2000.jpeg" class="d-block w-100 redondo" alt="...">
+        <div class="carousel-caption d-none d-md-block ">
+          <h5>GEARS OF WARS 4</h5>
+          <p>Gears of War 4 o Gears 4 es un videojuego de acción y shooter en tercera persona desarrollado por The Coalition y distribuido por Microsoft lanzado el 11 de octubre de 2016 para Xbox One y Windows 10</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </a>
+  </div>
+
+</div>
+
+<br><br>
+  <h2 class="text-center text-white">¡Busca los JUEGOS mejor recomendados!</h2>
   <br>
   <form class="d-flex" action="/" method="POST" style="padding-left: 25rem;">
     <input class="form-control" name="busqueda" style="width: 500px;" type="search" placeholder="Titulo del juego" aria-label="Search">
